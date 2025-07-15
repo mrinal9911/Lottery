@@ -12,14 +12,14 @@ class AdminController extends Controller
     public function index()
     {
         $results = LotteryResult::with(['game', 'drawTime'])->latest()->paginate(20);
-        return view('admin.lottery_results.index', compact('results'));
+        return view('admin.index', compact('results'));
     }
 
     public function create()
     {
         $games = Game::all();
         $times = DrawTime::all();
-        return view('admin.lottery_results.create', compact('games', 'times'));
+        return view('admin.add-result', compact('games', 'times'));
     }
 
     public function store(Request $request)
