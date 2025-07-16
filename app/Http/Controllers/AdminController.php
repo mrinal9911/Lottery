@@ -25,12 +25,10 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'game_id' => 'required|exists:games,id',
+            'game_id'      => 'required|exists:games,id',
             'draw_time_id' => 'required|exists:draw_times,id',
-            'draw_date' => 'required|date',
-            'number1' => 'nullable|integer|between:0,99',
-            'number2' => 'nullable|integer|between:0,99',
-            'number3' => 'nullable|integer|between:0,99',
+            'draw_date'    => 'required|date',
+            'number'       => 'nullable|integer|between:0,99',
         ]);
 
         LotteryResult::create($request->all());

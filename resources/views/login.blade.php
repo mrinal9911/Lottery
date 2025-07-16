@@ -90,8 +90,8 @@
         </div>
         <div id="grad" class="rounded text-center p-5 shadow-down" style="text-align: center;  width: 100%;  vertical-align: middle; margin: 0 auto;  display: inline-block; background-color: #272525">
             <!-- <h4 class="mb-80">Contact Form</h4> -->
-            <form method="post" action="https://playshrigoagems.com/login/validate_login" id="home" name="home" style="text-align: center; vertical-align: middle; color: white">
-
+            <form action="{{ url('login') }}" method="POST" id="home" name="home" style="text-align: center; vertical-align: middle; color: white">
+                @csrf
                 <table align="center" border="0" cellpadding="0" cellspacing="0" style="font-size:26px; text-align: center; vertical-align: middle; width: 100%  ">
                     <tr style="text-align: center; color: whitesmoke">
                         <td colspan="2">
@@ -101,11 +101,11 @@
                     </tr>
                     <tr style="color: white; text-align: right;">
                         <td style="min-width: 120px">Card No: &nbsp;</td>
-                        <td align="left"><input type="text" id="card" name="cardno" class="numAmt" style="text-align: center; background-color: white; color: black; " maxlength="8" required="true" autofocus /></td>
+                        <td align="left"><input type="email" id="email" name="email" class="numAmt" style="text-align: center; background-color: white; color: black;" required="true" autofocus /></td>
                     </tr>
                     <tr style="color: white; text-align: right;">
                         <td>Pin No: &nbsp;</td>
-                        <td align="left"><input type="password" id="pin" name="pinno" class="numAmt" style="text-align: center; background-color: white; color: black;" maxlength="8" required="true" /></td>
+                        <td align="left"><input type="password" id="password" name="password" class="numAmt" style="text-align: center; background-color: white; color: black;" required="true" /></td>
                     </tr>
                     <tr style="color: white; text-align: right;">
                         <td>
