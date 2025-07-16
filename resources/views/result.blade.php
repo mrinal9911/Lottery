@@ -21,7 +21,7 @@ Results
                     <input type="submit" value="Show" class="button">
                 </td>
                 <td align="right" style="font-size: 16px;">
-                    <a href="resultSummaryOld.html" class="button">Result Summary</a>
+                    <a href="/result-summary" class="button">Result Summary</a>
                 </td>
             </tr>
         </table>

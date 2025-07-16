@@ -22,12 +22,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />-->
     <title>@yield('title')</title>
 
-    <link rel="stylesheet" href="css/jquery-ui.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="css/jquery.wysiwyg.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="css/admin.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/css/jquery-ui.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/css/jquery.wysiwyg.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/css/admin.css" type="text/css" media="screen" />
 
-    <script type='text/javascript' src="js/jquery-1.7.2.js"></script>
-    <script type='text/javascript' src="js/homejs200205.js"></script>
+    <script type='text/javascript' src="/js/jquery-1.7.2.js"></script>
+    <script type='text/javascript' src="/js/homejs200205.js"></script>
 
     <!--Scripts FOR mENU-->
     <style type="text/css">
@@ -222,7 +222,7 @@
                                     </div>
                                 </td>
                                 <td align="right" style="width:26%; background-color:#990000">
-                                    <form method="post" action="https://playshrigoagems.com/login/validate_login" id="home" name="home">
+                                    <form method="post" action="/login" id="home" name="home">
                                         <input type="hidden" id="nxtDrTime" name="nxtDrTime" value="" />
                                         <div id="logindiv" style="padding: 5px 5px 0px 5px; display:block">
                                             <span style=" font-size:18px; color:#FFFFFF">Card No </span>&nbsp;&nbsp;
@@ -241,9 +241,9 @@
                                 <td align="center">
                                     <table>
                                         <tr style="height: 30px">
-                                            <td><a style="color: #9ED929 " href="main.html">Home &nbsp;&nbsp;&nbsp;&nbsp; </a></td>
+                                            <td><a style="color: #9ED929 " href="/">Home &nbsp;&nbsp;&nbsp;&nbsp; </a></td>
                                             <td><span style="color: #000000">|</span></td>
-                                            <td><a style="color: #9ED929 " href="results/result_old.html"> &nbsp;&nbsp;&nbsp;&nbsp; Results </a></td>
+                                            <td><a style="color: #9ED929 " href="/result"> &nbsp;&nbsp;&nbsp;&nbsp; Results </a></td>
                                         </tr>
                                     </table>
                                 </td>
@@ -256,7 +256,7 @@
 
 
                         <div style="text-align: center; vertical-align: top; background-color: black;"><br />
-                            <a href="apks/PlayGoaStar3.apk"><span style="color: rgb(102,204,0); font-size: large; vertical-align: middle; ">Click here to donwload Mobile App</span></a>
+                            <a href="apks/PlayGoaStar3.apk"><span style="color: rgb(102,204,0); font-size: large; vertical-align: middle; ">Click here to download Mobile App</span></a>
                         </div>
                         <div style="background-color: black; color: yellow; padding-top: 25px; padding-bottom: 25px; font-size: 24px ; font-weight: 200;  ">
 
@@ -269,7 +269,6 @@
                         <div style="background-color:#990000; color: #FFFFFF; font-size: 6px">
                             You must be above 18 years to play.
                         </div>
-
 
                         <div style="background-color:#990000">
 
