@@ -210,7 +210,7 @@
                                                     <div>
                                                         <table width="100%">
                                                             <tr>
-                                                                <td align="left"><span style=" font-size:16px; color: #fed22f">Current Time<strong><br /><span style="color: #FFFFFF" id="currentTime">&nbsp;</span></strong></span></td>
+                                                                <td align="left"><span style=" font-size:16px; color: #fed22f">Current Time<strong><br /><span style="color: #FFFFFF" id="currentTime">loading..</span></strong></span></td>
                                                                 <td align="center"><span style=" font-size:20px; color:#fed22f">Next Draw Time<strong><br /><span style="color: #FFFFFF" id="nextDraw">&nbsp;</span></strong></span></td>
                                                                 <td align="right"><span style=" font-size:16px; color:#fed22f">Time Remaining<strong><br /><span style="color: #FFFFFF" id="timeRemaining">&nbsp;</span></strong></span></td>
                                                             </tr>
@@ -283,5 +283,16 @@
         <br />
 
         @yield('footer-script')
+        <script>
+            function updateClock() {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString();
+                document.getElementById('currentTime').textContent = timeString;
+            }
+
+            updateClock(); 
+            setInterval(updateClock, 1000); 
+        </script>
 </body>
+
 </html>
