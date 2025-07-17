@@ -1,11 +1,10 @@
 @extends('layout.app')
-
-@section('title', 'Results')
+@section('title')
+Lottery Results
+@endsection
 
 @section('page-content')
 <div class="container py-4">
-
-    {{-- Page Header --}}
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="text-uppercase fw-bold">Lottery Results</h2>
         <a href="{{ route('lottery-results.create') }}" class="btn btn-success shadow-sm">
@@ -44,7 +43,6 @@
     </table>
 </div>
 @endsection
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
 
 @section('footer-script')

@@ -25,6 +25,10 @@
     <link rel="stylesheet" href="/css/jquery-ui.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="/css/jquery.wysiwyg.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="/css/admin.css" type="text/css" media="screen" />
+    
+    <!-- Lottery result -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
 
     <script type='text/javascript' src="/js/jquery-1.7.2.js"></script>
     <script type='text/javascript' src="/js/homejs200205.js"></script>
@@ -222,18 +226,6 @@
                                     </div>
                                 </td>
                                 <td align="right" style="width:26%; background-color:#990000">
-                                    <form method="post" action="/login" id="home" name="home">
-                                        <input type="hidden" id="nxtDrTime" name="nxtDrTime" value="" />
-                                        <div id="logindiv" style="padding: 5px 5px 0px 5px; display:block">
-                                            <span style=" font-size:18px; color:#FFFFFF">Card No </span>&nbsp;&nbsp;
-                                            <input type="text" id="cardno" name="cardno" />
-                                            <br />
-                                            <span style=" font-size:18px; color:#FFFFFF">Pin No </span>&nbsp;&nbsp;
-                                            <input type="password" id="pinno" name="pinno" />
-                                            <br />
-                                            <input style=" font-size:18px; height:40px; width:120px; padding:0px" name="btnLogin" type="submit" class="button" value="Login" />
-                                        </div>
-                                    </form>
                                 </td>
                             </tr>
                             <tr style="background-color: #343131; color: #9ED929; font-weight: bolder; font-size: medium;">
@@ -244,6 +236,8 @@
                                             <td><a style="color: #9ED929 " href="/">Home &nbsp;&nbsp;&nbsp;&nbsp; </a></td>
                                             <td><span style="color: #000000">|</span></td>
                                             <td><a style="color: #9ED929 " href="/result"> &nbsp;&nbsp;&nbsp;&nbsp; Results </a></td>
+                                            <td><span style="color: #000000">|</span></td>
+                                            <td><a style="color: #9ED929 " href="/login"> &nbsp;&nbsp;&nbsp;&nbsp; Login </a></td>
                                         </tr>
                                     </table>
                                 </td>
