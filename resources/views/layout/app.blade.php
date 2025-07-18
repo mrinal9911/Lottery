@@ -168,7 +168,7 @@
                             <!--HEADER -->
                             <tr>
                                 <td height="10px" colspan="3" align="center" style="background-color:#990000; width:23%">
-                                    <img src="{{ asset('images/goalogo.png') }}" style="width:180px;" />
+                                    <img src="{{ asset('images/goalogo.jpeg') }}" style="width:180px;" />
                                 </td>
                                 <!-- AJAX VIEWPORT-->
                                 <td colspan="2" style="background-color:#990000">
