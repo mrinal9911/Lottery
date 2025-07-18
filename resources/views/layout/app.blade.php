@@ -256,7 +256,7 @@
                         </div>
                         <div style="background-color: black; color: yellow; padding-top: 25px; padding-bottom: 25px; font-size: 24px ; font-weight: 200;  ">
 
-                            For Results Contact : 9983107444 | 9649117666<br />
+                            For Results Contact : XXXXXXXXXX | XXXXXXXXXX<br />
                         </div>
                         <div style="background-color:#990000; color: #FFFFFF; font-size: 6px">
                             All the information shown here is sponsored and we warn you that Satta Matka gambling in your country,state may be banned or illegal.
