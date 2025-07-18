@@ -5,7 +5,8 @@ Results
 @section('page-content')
 <br />
 <div>
-    <form method="post" id="result_form" name="result_form" action="https://playshrigoagems.com/results/showResultsOld" class="default">
+    <form method="post" id="result_form" name="result_form" method="post" action="{{ route('result') }}" class="default">
+        @csrf
         <table width="90%" cellpadding="0" cellspacing="0">
             <tr align="left">
                 <td align="left" colspan="2" style=" font-size:22px">
@@ -15,7 +16,8 @@ Results
             </tr>
             <tr>
                 <td style=" width:100px; font-size: 16px;">
-                    Date: <input type="text" id="datepicker" name="selectDate" value="07/11/2025">
+                    Date: <input type="text" id="datepicker" name="selectDate"
+                        value="{{ old('selectDate', \Carbon\Carbon::parse($selectedDate ?? now())->format('d/m/Y')) }}">
                 </td>
                 <td align="left">
                     <input type="submit" value="Show" class="button">
@@ -26,143 +28,62 @@ Results
             </tr>
         </table>
         <br />
+
+        <style>
+            .game-1 {
+                background-color: #1E90FF;
+                /* Dodger Blue */
+            }
+
+            .game-2 {
+                background-color: #9b26af;
+                /* Purple */
+            }
+
+            .game-3 {
+                background-color: #e91e63;
+                /* Pink */
+            }
+
+            .game-4 {
+                background-color: #f44336;
+                /* Red */
+            }
+        </style>
+
         <table class="table1" style="width: 100%">
             <thead>
                 <tr>
-                    <th>Draw-Time</th>
-                    <th style="background: #2056E6">Golden-A<br />60-69</th>
-                    <th style="background: #A120E6">Shubhlakshami-A<br />20-29</th>
-                    <th style="background: #E620AA">Rajashri-A<br />10-19</th>
-                    <th style="background: #E63820">GOA-Star</th>
+                    <th style="background: #9dd151; color: white">Draw-Time</th>
+                    @foreach($games as $game)
+                    <th class="game-{{ $game->id }}" style="color: white">
+                        {{ $game->name }}<br />
+                        {{ $game->number_range }}
+                    </th>
+                    @endforeach
                 </tr>
             </thead>
             <tbody>
+                @foreach($drawTimes as $time)
                 <tr>
-                    <th scope="row">1:15 PM </th>
-                    <td class="redc" style="background: #2056E6; font-size: 20px; color: #FFFFFF">78</td>
-                    <td class="redc" style="background: #A120E6; font-size: 20px; color: #FFFFFF">52</td>
-                    <td class="redc" style="background: #E620AA; font-size: 20px; color: #FFFFFF">66</td>
-                    <td class="redc" style="background: #E63820; font-size: 20px; color: #FFFFFF">8 (567)</td>
+                    <th style="background: #9dd151; color: white" scope="row">
+                        {{ \Carbon\Carbon::parse($time->time)->format('g:i A') }}
+                    </th>
+                    @foreach($games as $game)
+                    @php
+                    $result = $results->first(function ($res) use ($time, $game) {
+                    return $res->draw_time_id == $time->id && $res->game_id == $game->id;
+                    });
+                    @endphp
+                    <td class="game-{{ $game->id }}" style="font-size: 20px; color: white; text-align: center;">
+                        {{ $result ? $result->number . ($result->total_ticket ? ' (' . $result->total_ticket . ')' : '') : '-' }}
+                    </td>
+                    @endforeach
                 </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <th scope="row">1:00 PM </th>
-                    <td class="redc" style="background: #2056E6; font-size: 20px; color: #FFFFFF">80</td>
-                    <td class="redc" style="background: #A120E6; font-size: 20px; color: #FFFFFF">77</td>
-                    <td class="redc" style="background: #E620AA; font-size: 20px; color: #FFFFFF">26</td>
-                    <td class="redc" style="background: #E63820; font-size: 20px; color: #FFFFFF">7 (278)</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <th scope="row">12:45 PM </th>
-                    <td class="redc" style="background: #2056E6; font-size: 20px; color: #FFFFFF">90</td>
-                    <td class="redc" style="background: #A120E6; font-size: 20px; color: #FFFFFF">53</td>
-                    <td class="redc" style="background: #E620AA; font-size: 20px; color: #FFFFFF">16</td>
-                    <td class="redc" style="background: #E63820; font-size: 20px; color: #FFFFFF">5 (159)</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <th scope="row">12:30 PM </th>
-                    <td class="redc" style="background: #2056E6; font-size: 20px; color: #FFFFFF">80</td>
-                    <td class="redc" style="background: #A120E6; font-size: 20px; color: #FFFFFF">14</td>
-                    <td class="redc" style="background: #E620AA; font-size: 20px; color: #FFFFFF">95</td>
-                    <td class="redc" style="background: #E63820; font-size: 20px; color: #FFFFFF">8 (189)</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <th scope="row">12:15 PM </th>
-                    <td class="redc" style="background: #2056E6; font-size: 20px; color: #FFFFFF">99</td>
-                    <td class="redc" style="background: #A120E6; font-size: 20px; color: #FFFFFF">81</td>
-                    <td class="redc" style="background: #E620AA; font-size: 20px; color: #FFFFFF">04</td>
-                    <td class="redc" style="background: #E63820; font-size: 20px; color: #FFFFFF">7 (890)</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <th scope="row">12:00 PM </th>
-                    <td class="redc" style="background: #2056E6; font-size: 20px; color: #FFFFFF">80</td>
-                    <td class="redc" style="background: #A120E6; font-size: 20px; color: #FFFFFF">22</td>
-                    <td class="redc" style="background: #E620AA; font-size: 20px; color: #FFFFFF">21</td>
-                    <td class="redc" style="background: #E63820; font-size: 20px; color: #FFFFFF">2 (228)</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <th scope="row">11:45 AM </th>
-                    <td class="redc" style="background: #2056E6; font-size: 20px; color: #FFFFFF">71</td>
-                    <td class="redc" style="background: #A120E6; font-size: 20px; color: #FFFFFF">75</td>
-                    <td class="redc" style="background: #E620AA; font-size: 20px; color: #FFFFFF">39</td>
-                    <td class="redc" style="background: #E63820; font-size: 20px; color: #FFFFFF">7 (377)</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <th scope="row">11:30 AM </th>
-                    <td class="redc" style="background: #2056E6; font-size: 20px; color: #FFFFFF">69</td>
-                    <td class="redc" style="background: #A120E6; font-size: 20px; color: #FFFFFF">48</td>
-                    <td class="redc" style="background: #E620AA; font-size: 20px; color: #FFFFFF">62</td>
-                    <td class="redc" style="background: #E63820; font-size: 20px; color: #FFFFFF">6 (466)</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <th scope="row">11:15 AM </th>
-                    <td class="redc" style="background: #2056E6; font-size: 20px; color: #FFFFFF">47</td>
-                    <td class="redc" style="background: #A120E6; font-size: 20px; color: #FFFFFF">80</td>
-                    <td class="redc" style="background: #E620AA; font-size: 20px; color: #FFFFFF">95</td>
-                    <td class="redc" style="background: #E63820; font-size: 20px; color: #FFFFFF">1 (489)</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <th scope="row">11:00 AM </th>
-                    <td class="redc" style="background: #2056E6; font-size: 20px; color: #FFFFFF">10</td>
-                    <td class="redc" style="background: #A120E6; font-size: 20px; color: #FFFFFF">94</td>
-                    <td class="redc" style="background: #E620AA; font-size: 20px; color: #FFFFFF">28</td>
-                    <td class="redc" style="background: #E63820; font-size: 20px; color: #FFFFFF">2 (129)</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <th scope="row">10:45 AM </th>
-                    <td class="redc" style="background: #2056E6; font-size: 20px; color: #FFFFFF">30</td>
-                    <td class="redc" style="background: #A120E6; font-size: 20px; color: #FFFFFF">95</td>
-                    <td class="redc" style="background: #E620AA; font-size: 20px; color: #FFFFFF">66</td>
-                    <td class="redc" style="background: #E63820; font-size: 20px; color: #FFFFFF">8 (369)</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <th scope="row">10:30 AM </th>
-                    <td class="redc" style="background: #2056E6; font-size: 20px; color: #FFFFFF">35</td>
-                    <td class="redc" style="background: #A120E6; font-size: 20px; color: #FFFFFF">40</td>
-                    <td class="redc" style="background: #E620AA; font-size: 20px; color: #FFFFFF">17</td>
-                    <td class="redc" style="background: #E63820; font-size: 20px; color: #FFFFFF">8 (134)</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <th scope="row">10:15 AM </th>
-                    <td class="redc" style="background: #2056E6; font-size: 20px; color: #FFFFFF">24</td>
-                    <td class="redc" style="background: #A120E6; font-size: 20px; color: #FFFFFF">78</td>
-                    <td class="redc" style="background: #E620AA; font-size: 20px; color: #FFFFFF">21</td>
-                    <td class="redc" style="background: #E63820; font-size: 20px; color: #FFFFFF">1 (227)</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <th scope="row">10:00 AM </th>
-                    <td class="redc" style="background: #2056E6; font-size: 20px; color: #FFFFFF">90</td>
-                    <td class="redc" style="background: #A120E6; font-size: 20px; color: #FFFFFF">21</td>
-                    <td class="redc" style="background: #E620AA; font-size: 20px; color: #FFFFFF">64</td>
-                    <td class="redc" style="background: #E63820; font-size: 20px; color: #FFFFFF">7 (269)</td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
+
 
         <br /><br />
     </form>

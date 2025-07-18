@@ -13,7 +13,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('home');
     Route::get('/login', 'login')->name('login');
     Route::post('/login', 'postLogin');
-    Route::get('/result', 'result')->name('result');
+    Route::match(['get', 'post'], '/result', 'result')->name('result');
     Route::match(['get', 'post'], '/result-summary', 'resultSummary')->name('result-summary');
 });
 
