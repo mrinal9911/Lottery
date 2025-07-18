@@ -74,6 +74,7 @@ Result summary
 
     {{-- Results Table --}}
     @php
+    $results = collect($results); // 🔴 THIS LINE IS REQUIRED
     // Group results by draw time (time string)
     $grouped = $results->groupBy(function ($item) {
     return $item->drawTime->time; // Group by time like 10:00:00
@@ -86,6 +87,7 @@ Result summary
     @endphp
 
     @if ($grouped->count())
+
 
     <div id="table-scroll" class="table-scroll">
         <div class="table-wrap">
