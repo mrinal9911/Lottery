@@ -4,7 +4,7 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 
 <head>
-    <script type='text/javascript' src="js/jquery-1.7.2.js"></script>
+    <script type='text/javascript' src="{{ asset('js/jquery-1.7.2.js') }}"></script>
     <script type="text/javascript">
         var base_url = "index.html";
         var chat_id;
@@ -22,9 +22,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />-->
     <title>@yield('title')</title>
 
-    <link rel="stylesheet" href="/css/jquery-ui.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="/css/jquery.wysiwyg.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="/css/admin.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ asset('css/jquery.wysiwyg.css') }}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" media="screen" />
 
     <!-- Lottery result -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -32,8 +32,8 @@
     @yield('additional-css')
 
 
-    <script type='text/javascript' src="/js/jquery-1.7.2.js"></script>
-    <script type='text/javascript' src="/js/homejs200205.js"></script>
+    <script type='text/javascript' src="{{ asset('js/jquery-1.7.2.js') }}"></script>
+    <script type='text/javascript' src="{{ asset('js/homejs200205.js') }}"></script>
 
     <!--Scripts FOR mENU-->
     <style type="text/css">
@@ -168,7 +168,7 @@
                             <!--HEADER -->
                             <tr>
                                 <td height="10px" colspan="3" align="center" style="background-color:#990000; width:23%">
-                                    <img src="images/goalogo.png" style="width:180px;" />
+                                    <img src="{{ asset('images/goalogo.png') }}" style="width:180px;" />
                                 </td>
                                 <!-- AJAX VIEWPORT-->
                                 <td colspan="2" style="background-color:#990000">
@@ -190,17 +190,17 @@
                                                                     <span style=" font-size:24px; color:#FFFFFF"><strong>
                                                                             <table style="color:#990000; text-align:center; font-size:18px; width:100%; ">
                                                                                 <tr>
-                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url(images/gb_back.png); background-size: 55px 55px; width:55px; height:55px; "> <strong>GA</strong><br /><span style="font-size:14px">60-69</span> </td>
-                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url(images/gb_back.png); background-size: 55px 55px; width:55px; height:55px;"> <strong>SA</strong><br /><span style="font-size:14px">20-29</span> </td>
-                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url(images/gb_back.png); background-size: 55px 55px; width:55px; height:55px;"><strong>RA</strong><br /><span style="font-size:14px">10-19</span> </td>
-                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url(images/gb_back.png); background-size: 80px 100px; width:80px; height:90px; " rowspan=2><strong style="font-size:22px;"> GOA </strong><br /> Star </td>
-                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url(images/gb_back.png); background-size: 55px 55px; width:55px; height:55px; font-size:20pt; color: rgb(255,0,0);"><span id="star3_single">&nbsp;</span></td>
+                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url('{{ asset('images/gb_back.png') }}'); background-size: 55px 55px; width:55px; height:55px; "> <strong>GA</strong><br /><span style="font-size:14px">60-69</span> </td>
+                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url('{{ asset('images/gb_back.png') }}'); background-size: 55px 55px; width:55px; height:55px;"> <strong>SA</strong><br /><span style="font-size:14px">20-29</span> </td>
+                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url('{{ asset('images/gb_back.png') }}'); background-size: 55px 55px; width:55px; height:55px;"><strong>RA</strong><br /><span style="font-size:14px">10-19</span> </td>
+                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url('{{ asset('images/gb_back.png') }}'); background-size: 80px 100px; width:80px; height:90px; " rowspan=2><strong style="font-size:22px;"> GOA </strong><br /> Star </td>
+                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url('{{ asset('images/gb_back.png') }}'); background-size: 55px 55px; width:55px; height:55px; font-size:20pt; color: rgb(255,0,0);"><span id="star3_single">&nbsp;</span></td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url(images/res_back.png);  background-size: 55px 45px; width:55px; height:45px; font-size:20pt; color: rgb(255,0,0);"><span id="result_GA">&nbsp;</span></td>
-                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url(images/res_back.png); background-size: 55px 45px; width:55px; height:45px; font-size:20pt; color: rgb(255,0,0);"><span id="result_GB">&nbsp;</span></td>
-                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url(images/res_back.png); background-size: 55px 45px; width:55px; height:45px; font-size:20pt; color: rgb(255,0,0);"><span id="result_GC">&nbsp;</span></td>
-                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url(images/res_back.png); background-size: 55px 45px; width:55px; height:45px; font-size:20pt; color: rgb(255,0,0);"><span id="star3_sp">&nbsp;</span></td>
+                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url('{{ asset('images/res_back.png') }}');  background-size: 55px 45px; width:55px; height:45px; font-size:20pt; color: rgb(255,0,0);"><span id="result_GA">&nbsp;</span></td>
+                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url('{{ asset('images/res_back.png') }}'); background-size: 55px 45px; width:55px; height:45px; font-size:20pt; color: rgb(255,0,0);"><span id="result_GB">&nbsp;</span></td>
+                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url('{{ asset('images/res_back.png') }}'); background-size: 55px 45px; width:55px; height:45px; font-size:20pt; color: rgb(255,0,0);"><span id="result_GC">&nbsp;</span></td>
+                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url('{{ asset('images/res_back.png') }}'); background-size: 55px 45px; width:55px; height:45px; font-size:20pt; color: rgb(255,0,0);"><span id="star3_sp">&nbsp;</span></td>
                                                                                 </tr>
                                                                             </table>
                                                                         </strong>

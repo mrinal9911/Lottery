@@ -12,8 +12,9 @@ class AdminController extends Controller
     public function index()
     {
         $results = LotteryResult::with(['game', 'drawTime'])->latest()->paginate(20);
-        return view('admin.index', compact('results'));
+        return view('admin.lottery-result', compact('results'));
     }
+
 
     public function create()
     {
