@@ -5,13 +5,13 @@ Home
 
 @section('page-content')
 <br />
-<a class="buttonblink" href="http://playgoastar.com/">Visit Goa-Star</a> <br /><br />
+<a class="buttonblink" href="/">Visit Goa-Casino</a> <br /><br />
 <a class="button" href="main5660.html?hview=home_content_vertical">Vertical View</a>
 
 <br /><br />
 
 
-<form method="post" id="home_content" name="home_content" class="default" action="https://playshrigoagems.com/main/print_ticket">
+<form method="post" id="home_content" name="home_content" class="default" action="/">
 
     <table>
         <tr>
@@ -158,7 +158,6 @@ Home
 
 @section('footer-script')
 <script>
-   
     var x = setInterval(function() {
         var drawDtTime = document.getElementById("nxtDrTime").value;
         var countDownDate = new Date(drawDtTime).getTime();

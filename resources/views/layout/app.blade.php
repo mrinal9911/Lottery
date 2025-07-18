@@ -151,7 +151,7 @@
         <div style="background-color:#990000">
             <marquee id="a" scrollamount="4" ONMOUSEOVER="this.stop();" ONMOUSEOUT="this.start();" style=" font-family:Verdana; color:#00000">
                 <span style="color: white"></span>
-                <a href="apks/PlayGoaStar3.apk"><span style="color: white">Click here to download PlayMainGoldenRajashri Mobile App</span></a> |
+                <a href="/"><span style="color: white">Click here to download PlayMainGoldenRajashri Mobile App</span></a> |
             </marquee>
         </div>
 
@@ -252,7 +252,7 @@
 
 
                         <div style="text-align: center; vertical-align: top; background-color: black;"><br />
-                            <a href="apks/PlayGoaStar3.apk"><span style="color: rgb(102,204,0); font-size: large; vertical-align: middle; ">Click here to download Mobile App</span></a>
+                            <a href="/"><span style="color: rgb(102,204,0); font-size: large; vertical-align: middle; ">Click here to download Mobile App</span></a>
                         </div>
                         <div style="background-color: black; color: yellow; padding-top: 25px; padding-bottom: 25px; font-size: 24px ; font-weight: 200;  ">
 

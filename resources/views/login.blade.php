@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>GOA Star New</title>
+    <title>GOA CASINO</title>
 
     <script type="text/javascript">
         var base_url = "index.html";
@@ -81,12 +81,12 @@
         <!--<header class="navigations fixed-tops center">-->
         <!--<nav class="navbar navbar-expand-lg navbar-dark center">-->
         <!-- <div class=" rounded" style="text-align: center; width: 100%">
-                 <h3 style="font-family: Times New Roman; color: rgb(255,165,0); padding-left: 20px; padding-right: 20px; ">  GOA STAR <br/> GOLDEN </h3>
+                 <h3 style="font-family: Times New Roman; color: rgb(255,165,0); padding-left: 20px; padding-right: 20px; ">  GOA CASINO <br/> GOLDEN </h3>
             </div> -->
         <input type="hidden" id="nxtDrTime" name="nxtDrTime" value="" />
         <div style="text-align: center;  width: 100%">
             <a class="navbar-brand font-tertiary h3 " href="index.html"><img src="{{ asset('images/goalogo.jpeg') }}" style="width: 100px" alt="Myself"></a><br />
-            <span style="color: #EF870E ">Welcome to Goa Star </span>
+            <span style="color: #EF870E ">Welcome to Goa Casino </span>
         </div>
         <div id="grad" class="rounded text-center p-5 shadow-down" style="text-align: center;  width: 100%;  vertical-align: middle; margin: 0 auto;  display: inline-block; background-color: #272525">
             <!-- <h4 class="mb-80">Contact Form</h4> -->
@@ -100,11 +100,11 @@
                         </td>
                     </tr>
                     <tr style="color: white; text-align: right;">
-                        <td style="min-width: 120px">Card No: &nbsp;</td>
+                        <td style="min-width: 120px">Email: &nbsp;</td>
                         <td align="left"><input type="email" id="email" name="email" class="numAmt" style="text-align: center; background-color: white; color: black;" required="true" autofocus /></td>
                     </tr>
                     <tr style="color: white; text-align: right;">
-                        <td>Pin No: &nbsp;</td>
+                        <td>Password: &nbsp;</td>
                         <td align="left"><input type="password" id="password" name="password" class="numAmt" style="text-align: center; background-color: white; color: black;" required="true" /></td>
                     </tr>
                     <tr style="color: white; text-align: right;">
@@ -113,7 +113,7 @@
                         </td>
                         <td align="left">
                             <br /><input class="btn btn-xs btn-light" type="submit" value="Submit">
-                            <a href="index.html"><input class="btn btn-xs btn-light" type="button" value="Cancel"></a>
+                            <a href="/"><input class="btn btn-xs btn-light" type="button" value="Cancel"></a>
                         </td>
                     </tr>
                 </table>
