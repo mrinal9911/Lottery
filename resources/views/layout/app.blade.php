@@ -25,9 +25,11 @@
     <link rel="stylesheet" href="/css/jquery-ui.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="/css/jquery.wysiwyg.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="/css/admin.css" type="text/css" media="screen" />
-    
+
     <!-- Lottery result -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    @yield('additional-css')
 
 
     <script type='text/javascript' src="/js/jquery-1.7.2.js"></script>
@@ -284,8 +286,8 @@
                 document.getElementById('currentTime').textContent = timeString;
             }
 
-            updateClock(); 
-            setInterval(updateClock, 1000); 
+            updateClock();
+            setInterval(updateClock, 1000);
         </script>
 </body>
 

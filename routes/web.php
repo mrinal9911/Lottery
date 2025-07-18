@@ -14,7 +14,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/login', 'login')->name('login');
     Route::post('/login', 'postLogin');
     Route::get('/result', 'result')->name('result');
-    Route::get('/result-summary', 'resultSummary')->name('result-summary');
+    Route::match(['get', 'post'], '/result-summary', 'resultSummary')->name('result-summary');
 });
 
 
