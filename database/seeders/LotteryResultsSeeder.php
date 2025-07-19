@@ -17,9 +17,9 @@ class LotteryResultsSeeder extends Seeder
         $gameId = 1; // Change this to your actual game_id
         $drawTimeCount = 20; // You have 20 draw times per day
 
-        // Set the date range (July 1 to July 18, 2025)
+        // Set the date range (July 1 to July 31, 2025)
         $startDate = Carbon::create(2025, 7, 1);
-        $endDate = Carbon::create(2025, 7, 18);
+        $endDate = Carbon::create(2025, 7, 31);
 
         while ($startDate->lte($endDate)) {
             for ($drawTimeId = 1; $drawTimeId <= $drawTimeCount; $drawTimeId++) {

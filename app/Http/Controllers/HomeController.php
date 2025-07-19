@@ -6,6 +6,7 @@ use App\Models\DrawTime;
 use App\Models\Game;
 use App\Models\LotteryResult;
 use App\Models\User;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -21,6 +22,9 @@ class HomeController extends Controller
 
     public function login()
     {
+        # auth check
+        // if (auth()->check())
+        //     return redirect()->route('lottery-results.index');
         return view('login');
     }
 
@@ -48,7 +52,7 @@ class HomeController extends Controller
 
                 $data['token'] = $token;
                 $data['userDetails'] = $user;
-                return redirect('/admin/lottery-results')->with('success', 'You have Logged In Successfully');
+                return redirect('/result')->with('success', 'You have Logged In Successfully');
             }
         } catch (Exception $e) {
             return redirect('/login')->with('error', 'There was an error sending your message: ' . $e->getMessage());
@@ -58,10 +62,7 @@ class HomeController extends Controller
     public function result(Request $request)
     {
 
-
-        $date = $request->input('selectDate') ?? now()->format('Y-m-d');
-
-        // $parsedDate = \Carbon\Carbon::createFromFormat('m/d/Y', $date)->format('Y-m-d');
+        $date = $request->input('selectDate') ? Carbon::createFromFormat('d/m/Y', $request->input('selectDate'))->format('Y-m-d') : now()->format('Y-m-d');
 
         $results = LotteryResult::with(['drawTime', 'game'])
             ->whereDate('draw_date', $date)

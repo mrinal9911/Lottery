@@ -31,7 +31,6 @@
 
     @yield('additional-css')
 
-
     <script type='text/javascript' src="{{ asset('js/jquery-1.7.2.js') }}"></script>
     <script type='text/javascript' src="{{ asset('js/homejs200205.js') }}"></script>
 

@@ -18,7 +18,7 @@ Route::controller(HomeController::class)->group(function () {
 });
 
 
-Route::controller(AdminController::class)->prefix('admin')->group(function () {
+Route::controller(AdminController::class)->prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/lottery-results', 'index')->name('lottery-results.index');
     Route::get('/lottery-results/create', 'create')->name('lottery-results.create');
     Route::post('/lottery-results', 'store')->name('lottery-results.store');

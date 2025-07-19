@@ -2,7 +2,47 @@
 @section('title')
 Results
 @endsection
+
+@section('additional-css')
+<link rel="stylesheet" href="/css/style_table.css" type="text/css" />
+
+@endsection
+
 @section('page-content')
+
+
+<style>
+    .game-1 {
+        background-color: #1E90FF !important;
+        background: #1E90FF !important;
+
+        /* Dodger Blue */
+    }
+
+    .game-2 {
+        background-color: #A120E6 !important;
+        background: #A120E6 !important;
+
+        /* Purple */
+    }
+
+    .game-3 {
+        background-color: #E63820 !important;
+        background: #E63820 !important;
+
+        /* Pink */
+    }
+
+    .game-4 {
+        background-color: #f44336 !important;
+        background: #1E90FF !important;
+
+        /* Red */
+    }
+</style>
+
+
+
 <br />
 <div>
     <form method="post" id="result_form" name="result_form" method="post" action="{{ route('result') }}" class="default">
@@ -15,46 +55,29 @@ Results
                 </td>
             </tr>
             <tr>
-                <td style=" width:100px; font-size: 16px;">
-                    Date: <input type="text" id="datepicker" name="selectDate"
+                <td style="width: 200px; font-size: 16px;">
+                    Date:
+                    <input type="text" id="datepicker" name="selectDate"
+                        style="padding: 6px; width: 120px;"
+                        autocomplete="off"
                         value="{{ old('selectDate', \Carbon\Carbon::parse($selectedDate ?? now())->format('d/m/Y')) }}">
                 </td>
                 <td align="left">
                     <input type="submit" value="Show" class="button">
                 </td>
                 <td align="right" style="font-size: 16px;">
+                    <a href="{{ route('lottery-results.create') }}" class="button">Add Result</a>
                     <a href="/result-summary" class="button">Result Summary</a>
                 </td>
             </tr>
         </table>
         <br />
 
-        <style>
-            .game-1 {
-                background-color: #1E90FF;
-                /* Dodger Blue */
-            }
-
-            .game-2 {
-                background-color: #9b26af;
-                /* Purple */
-            }
-
-            .game-3 {
-                background-color: #e91e63;
-                /* Pink */
-            }
-
-            .game-4 {
-                background-color: #f44336;
-                /* Red */
-            }
-        </style>
 
         <table class="table1" style="width: 100%">
             <thead>
                 <tr>
-                    <th style="background: #9dd151; color: white">Draw-Time</th>
+                    <th style="background: #9dd151; color: white; padding:0px 10px;">Draw-Time</th>
                     @foreach($games as $game)
                     <th class="game-{{ $game->id }}" style="color: white">
                         {{ $game->name }}<br />
@@ -96,17 +119,29 @@ Results
 </table>
 
 </div>
+
+
 @endsection
 
 @section('footer-script')
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- jQuery UI -->
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+<!-- Datepicker initialization -->
 <script>
     $(function() {
         $("#datepicker").datepicker({
             minDate: -60,
-            maxDate: 0
+            maxDate: 0,
+            dateFormat: "dd/mm/yy",
+            changeMonth: true,
+            changeYear: true,
+            showAnim: "fadeIn"
         });
-        $("#datepicker").datepicker("option", "dateFormat", "dd/mm/yy");
-
     });
 </script>
 @endsection

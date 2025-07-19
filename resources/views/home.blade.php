@@ -6,7 +6,7 @@ Home
 @section('page-content')
 <br />
 <a class="buttonblink" href="/">Visit Goa-Casino</a> <br /><br />
-<a class="button" href="main5660.html?hview=home_content_vertical">Vertical View</a>
+<!-- <a class="button" href="main5660.html?hview=home_content_vertical">Vertical View</a> -->
 
 <br /><br />
 

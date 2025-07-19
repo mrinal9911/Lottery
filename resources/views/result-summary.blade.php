@@ -129,7 +129,7 @@ Result summary
     </div>
     @endif
 
-
+    <br><br>
 </div>
 @endsection
 
