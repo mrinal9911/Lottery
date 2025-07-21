@@ -279,14 +279,20 @@
 
         @yield('footer-script')
         <script>
-            function updateClock() {
-                const now = new Date();
-                const timeString = now.toLocaleTimeString();
-                document.getElementById('currentTime').textContent = timeString;
-            }
+            window.onload = function() {
+                function updateClock() {
+                    const now = new Date();
+                    const timeString = now.toLocaleTimeString();
+                    document.getElementById('currentTime').textContent = timeString;
+                }
 
-            updateClock();
-            setInterval(updateClock, 1000);
+                updateClock();
+                setInterval(updateClock, 1000);
+
+                const today = new Date();
+                const formatted = today.toLocaleDateString('en-GB'); // e.g., "21/07/2025"
+                document.getElementById('todays_date').innerText = formatted;
+            };
         </script>
 </body>
 
