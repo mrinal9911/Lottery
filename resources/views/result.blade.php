@@ -39,7 +39,11 @@ Results
 
         /* Red */
     }
+
+    /* Improve jQuery UI dialog appearance */
 </style>
+
+
 
 
 
@@ -65,13 +69,31 @@ Results
                 <td align="left">
                     <input type="submit" value="Show" class="button">
                 </td>
-                <td align="right" style="font-size: 16px;">
+
+                <!-- old code  -->
+                <!-- <td align="right" style="font-size: 16px;">
                     <a href="{{ route('lottery-results.create') }}" class="button">Add Result</a>
+                    <a href="/result-summary" class="button">Result Summary</a>
+                </td> -->
+
+                <!-- new code  -->
+                <td align="right" style="font-size: 16px;">
+                    <button id="openDialog" type="button" class="button">Add Result</button>
                     <a href="/result-summary" class="button">Result Summary</a>
                 </td>
             </tr>
         </table>
         <br />
+
+
+        <!-- Models  -->
+        <div id="iframeModal" title="Add Lottery Result" style="display:none;">
+            <iframe id="iframeContent" src="" style="width:100%; height:400px; border:none;"></iframe>
+        </div>
+
+
+
+
 
 
         <table class="table1" style="width: 100%">
@@ -124,12 +146,16 @@ Results
 @endsection
 
 @section('footer-script')
+
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- jQuery UI -->
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
 
 <!-- Datepicker initialization -->
 <script>
@@ -143,5 +169,22 @@ Results
             showAnim: "fadeIn"
         });
     });
+
+    $(function() {
+        $("#iframeModal").dialog({
+            autoOpen: false,
+            modal: true,
+            width: 600,
+            height: 500,
+            resizable: false
+        });
+
+        $("#openDialog").on("click", function() {
+            $("#iframeContent").attr("src", "{{ route('lottery-results.create') }}");
+            $("#iframeModal").dialog("open");
+        });
+    });
 </script>
+
+
 @endsection

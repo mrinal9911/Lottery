@@ -70,8 +70,9 @@ class HomeController extends Controller
 
         $games = Game::all(); // Should contain fields: id, name, color, number_range
         $drawTimes = DrawTime::orderBy('time')->get();
+        $times = DrawTime::all();
 
-        return view('result', compact('results', 'games', 'drawTimes'))
+        return view('result', compact('results', 'games', 'drawTimes','times'))
             ->with('selectedDate', $date);
 
 
@@ -101,7 +102,6 @@ class HomeController extends Controller
         //             ->get();
         //     }
         // }
-        return view('result');
     }
 
     public function resultSummary(Request $request)
