@@ -40,6 +40,24 @@ Results
         /* Red */
     }
 
+    .button {
+        display: inline-block;
+        padding: 8px 16px;
+        font-size: 16px;
+        text-decoration: none;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        margin-left: 8px;
+        text-align: center;
+    }
+
+    .button:hover {
+        background-color: #0056b3;
+        color: white;
+    }
+
     /* Improve jQuery UI dialog appearance */
 </style>
 
@@ -78,8 +96,10 @@ Results
 
                 <!-- new code  -->
                 <td align="right" style="font-size: 16px;">
-                    <button id="openDialog" type="button" class="button">Add Result</button>
+                    <a href="javascript:void(0)" id="openDialog" class="button">Add Result</a>
                     <a href="/result-summary" class="button">Result Summary</a>
+                    <!-- <button id="openDialog" type="button" class="button">Add Result</button>
+                    <a href="/result-summary" class="button">Result Summary</a> -->
                 </td>
             </tr>
         </table>
