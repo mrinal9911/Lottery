@@ -227,6 +227,30 @@
                                     </div>
                                 </td>
                                 <td align="right" style="width:26%; background-color:#990000">
+                                    <form action="/login" id="home" name="home">
+                                        <input type="hidden" id="nxtDrTime" name="nxtDrTime" value="" />
+                                        <div id="logindiv" style="padding: 5px 5px 0px 5px; display:block">
+                                            <span style=" font-size:18px; color:#FFFFFF">Card No </span>&nbsp;&nbsp;
+                                            <input type="text" id="cardno" name="cardno" />
+                                            <br />
+                                            <span style=" font-size:18px; color:#FFFFFF">Pin No </span>&nbsp;&nbsp;
+                                            <input type="password" id="pinno" name="pinno" />
+                                            <br />
+                                            <input style=" font-size:18px; height:40px; width:120px; padding:0px" href="/login" name="btnLogin" type="submit" class="button" value="Login" />
+
+                                        </div>
+                                        <div id="logindiv" style="font-size:18px; padding: 5px 5px 0px 5px; display:none">
+                                            <span style=" font-size:18px; color:#FFFFFF">Welcome </span>
+                                            <br />
+                                            <!--<span style=" font-size:14px; color:#FFFFFF">Point Limit </span>-->
+                                            <div id="pointlimit_viewport" style=" font-size:18px;">
+                                            </div>
+
+                                            <span style=" font-size:14px; color:#FFFFFF"><a style=" color:#FFFF00" href="../login/logout.html">Logout</a></span>
+                                            <br />
+                                            <span style=" font-size:14px; color:#FFFFFF"><a style=" color:#FFFF00" href="../main.html">Reset Password</a></span>
+                                        </div>
+                                    </form>
                                 </td>
                             </tr>
                             <tr style="background-color: #343131; color: #9ED929; font-weight: bolder; font-size: medium;">
@@ -237,8 +261,8 @@
                                             <td><a style="color: #9ED929 " href="/">Home &nbsp;&nbsp;&nbsp;&nbsp; </a></td>
                                             <td><span style="color: #000000">|</span></td>
                                             <td><a style="color: #9ED929 " href="/result"> &nbsp;&nbsp;&nbsp;&nbsp; Results </a></td>
-                                            <td><span style="color: #000000">|</span></td>
-                                            <td><a style="color: #9ED929 " href="/login"> &nbsp;&nbsp;&nbsp;&nbsp; Login </a></td>
+                                            <!-- <td><span style="color: #000000">|</span></td>
+                                            <td><a style="color: #9ED929 " href="/login"> &nbsp;&nbsp;&nbsp;&nbsp; Login </a></td> -->
                                         </tr>
                                     </table>
                                 </td>
