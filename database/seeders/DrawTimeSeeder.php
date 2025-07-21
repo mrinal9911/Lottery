@@ -14,8 +14,8 @@ class DrawTimeSeeder extends Seeder
      */
     public function run()
     {
-        $start = Carbon::createFromTime(10, 00); // 10:00 PM
-        $end = Carbon::createFromTime(16, 0);    // 4:00 PM
+        $start = Carbon::createFromTime(16, 00); // 10:00 PM
+        $end = Carbon::createFromTime(20, 00);    // 4:00 PM
 
         while ($start <= $end) {
             DB::table('draw_times')->insert([
@@ -24,7 +24,7 @@ class DrawTimeSeeder extends Seeder
                 'updated_at' => now(),
             ]);
 
-            $start->addMinutes(15);
+            $start->addMinutes(20);
         }
     }
 }

@@ -61,6 +61,20 @@ Results
     /* Improve jQuery UI dialog appearance */
 </style>
 
+<!-- Breadcrumb -->
+@if (session('success'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
+@if (session('error'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ session('error') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 
 
 
@@ -96,7 +110,9 @@ Results
 
                 <!-- new code  -->
                 <td align="right" style="font-size: 16px;">
-                    <a href="javascript:void(0)" id="openDialog" class="button">Add Result</a>
+                    @auth
+                    <a id="openDialog" class="button">Add Result</a>
+                    @endauth
                     <a href="/result-summary" class="button">Result Summary</a>
                     <!-- <button id="openDialog" type="button" class="button">Add Result</button>
                     <a href="/result-summary" class="button">Result Summary</a> -->

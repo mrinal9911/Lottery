@@ -25,6 +25,7 @@ class AdminController extends Controller
 
     public function store(Request $request)
     {
+        // return $request->all();
         $request->validate([
             'game_id'      => 'required|exists:games,id',
             'draw_time_id' => 'required|exists:draw_times,id',
@@ -34,6 +35,6 @@ class AdminController extends Controller
 
         LotteryResult::create($request->all());
 
-        return redirect()->route('lottery-results.index')->with('success', 'Result saved.');
+        return redirect()->route('result')->with('success', 'Result saved.');
     }
 }

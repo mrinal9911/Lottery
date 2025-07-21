@@ -44,6 +44,38 @@
         <button type="submit" class="btn btn-success btn-lg">💾 Save Result</button>
       </div>
     </form>
+
+    <script>
+      document.getElementById('lotteryForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            },
+          })
+          .then(response => {
+            if (response.ok) {
+              // Optional: Close modal if in modal
+              // Close modal logic here, e.g., hideModal();
+
+              // Redirect to results page
+              window.location.href = '/result-summary';
+            } else {
+              alert('Failed to save result.');
+            }
+          })
+          .catch(error => {
+            console.error(error);
+            alert('An error occurred.');
+          });
+      });
+    </script>
   </div>
 </div>
 
