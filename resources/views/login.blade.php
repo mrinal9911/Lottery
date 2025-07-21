@@ -85,7 +85,7 @@
             </div> -->
         <input type="hidden" id="nxtDrTime" name="nxtDrTime" value="" />
         <div style="text-align: center;  width: 100%">
-            <a class="navbar-brand font-tertiary h3 " href="index.html"><img src="{{ asset('images/goalogo.jpeg') }}" style="width: 100px" alt="Myself"></a><br />
+            <a class="navbar-brand font-tertiary h3 " href="index.html"><img src="{{ asset('images/goalogo.png') }}" style="width: 100px" alt="Myself"></a><br />
             <span style="color: #EF870E ">Welcome to Goa Casino </span>
         </div>
         <div id="grad" class="rounded text-center p-5 shadow-down" style="text-align: center;  width: 100%;  vertical-align: middle; margin: 0 auto;  display: inline-block; background-color: #272525">

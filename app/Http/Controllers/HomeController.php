@@ -51,7 +51,7 @@ class HomeController extends Controller
             ->get();
 
         $games = Game::all(); // Should contain fields: id, name, color, number_range
-        $drawTimes = DrawTime::orderBy('time')->get();
+        $drawTimes = DrawTime::orderByDesc('time')->get();
         $times = DrawTime::all();
 
         return view('result', compact('results', 'games', 'drawTimes', 'times'))

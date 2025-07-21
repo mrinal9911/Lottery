@@ -12,52 +12,6 @@ Results
 
 
 <style>
-    .game-1 {
-        background-color: #1E90FF !important;
-        background: #1E90FF !important;
-
-        /* Dodger Blue */
-    }
-
-    .game-2 {
-        background-color: #A120E6 !important;
-        background: #A120E6 !important;
-
-        /* Purple */
-    }
-
-    .game-3 {
-        background-color: #E63820 !important;
-        background: #E63820 !important;
-
-        /* Pink */
-    }
-
-    .game-4 {
-        background-color: #f44336 !important;
-        background: #1E90FF !important;
-
-        /* Red */
-    }
-
-    .button {
-        display: inline-block;
-        padding: 8px 16px;
-        font-size: 16px;
-        text-decoration: none;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        margin-left: 8px;
-        text-align: center;
-    }
-
-    .button:hover {
-        background-color: #0056b3;
-        color: white;
-    }
-
     /* Improve jQuery UI dialog appearance */
 </style>
 
