@@ -72,7 +72,7 @@ class HomeController extends Controller
         $drawTimes = DrawTime::orderBy('time')->get();
         $times = DrawTime::all();
 
-        return view('result', compact('results', 'games', 'drawTimes','times'))
+        return view('result', compact('results', 'games', 'drawTimes', 'times'))
             ->with('selectedDate', $date);
 
 
@@ -131,6 +131,7 @@ class HomeController extends Controller
                         ->where('game_id', $game->id)
                         ->whereYear('draw_date', $year)
                         ->whereMonth('draw_date', $month)
+                        ->whereDate('draw_date', '<=', now()->toDateString()) // ✅ only till today's date
                         ->orderBy('draw_date')
                         ->orderBy('draw_time_id')
                         ->get();
@@ -141,7 +142,5 @@ class HomeController extends Controller
         } catch (Exception $e) {
             return redirect('/result-summary')->with('error', 'There was an error processing your request: ' . $e->getMessage());
         }
-
-        // return view('result-summary');
     }
 }
