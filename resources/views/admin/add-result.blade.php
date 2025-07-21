@@ -15,9 +15,14 @@
         <select name="game_id" class="form-select" required>
           <option value="" disabled selected>Select game</option>
           @foreach ($games as $game)
-            <option value="{{ $game->id }}">{{ $game->name }}</option>
+          <option value="{{ $game->id }}">{{ $game->name }}</option>
           @endforeach
         </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">📅 Draw Date</label>
+        <input type="date" name="draw_date" class="form-control" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}" required>
       </div>
 
       <div class="mb-3">
@@ -25,14 +30,9 @@
         <select name="draw_time_id" class="form-select" required>
           <option value="" disabled selected>Select draw time</option>
           @foreach ($times as $time)
-            <option value="{{ $time->id }}">{{ \Carbon\Carbon::parse($time->time)->format('h:i A') }}</option>
+          <option value="{{ $time->id }}">{{ \Carbon\Carbon::parse($time->time)->format('h:i A') }}</option>
           @endforeach
         </select>
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label">📅 Draw Date</label>
-        <input type="date" name="draw_date" class="form-control" required>
       </div>
 
       <div class="mb-3">
@@ -56,9 +56,11 @@
   body {
     background-color: #f8f9fa;
   }
+
   .card {
     border-radius: 1rem;
   }
+
   .form-label {
     font-weight: 500;
   }
