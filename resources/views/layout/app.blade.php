@@ -237,7 +237,8 @@
                                             <input type="password" id="pinno" name="pinno" />
                                             <br />
                                             <!-- <input style=" font-size:18px; height:40px; width:120px; padding:0px" href="/logout" name="btnLogin" type="submit" class="button" value="Logout" /> -->
-                                            <input style=" font-size:18px; height:40px; width:120px; padding:0px" href="/login" name="btnLogin" type="submit" class="button" value="Login" />
+                                            <!-- <input style=" font-size:18px; height:40px; width:120px; padding:0px" href="/login" name="btnLogin" class="button" value="Login" /> -->
+                                            <input style=" font-size:18px; height:40px; width:120px; padding:0px" href="/login" name="btnLogin" type="button" class="button" value="Login" />
 
                                         </div>
                                         <div id="logindiv" style="font-size:18px; padding: 5px 5px 0px 5px; display:none">
@@ -262,6 +263,10 @@
                                             <td><a style="color: #9ED929 " href="/">Home &nbsp;&nbsp;&nbsp;&nbsp; </a></td>
                                             <td><span style="color: #000000">|</span></td>
                                             <td><a style="color: #9ED929 " href="/result"> &nbsp;&nbsp;&nbsp;&nbsp; Results </a></td>
+                                            @if (Request::is('result-summary'))
+                                                <td><span style="color: #000000">|</span></td>
+                                                <td><a style="color: #9ED929" href="/login"> &nbsp;&nbsp;&nbsp;&nbsp; Login </a></td>
+                                            @endif
                                             <!-- <td><span style="color: #000000">|</span></td>
                                             <td><a style="color: #9ED929 " href="/login"> &nbsp;&nbsp;&nbsp;&nbsp; Login </a></td> -->
                                         </tr>

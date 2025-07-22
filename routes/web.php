@@ -26,4 +26,8 @@ Route::controller(AdminController::class)->prefix('admin')->middleware(['auth'])
     Route::post('/lottery-results', 'store')->name('lottery-results.store');
 });
 
-Route::get('/logout', [HomeController::class, 'logout'])->middleware(['auth'])->name('logout');
+// Route::get('/logout', [HomeController::class, 'logout'])->middleware(['auth'])->name('logout');
+
+// Route::controller(AdminController::class)->prefix('admin')->group(function () {
+//     Route::post('/lottery-results', 'store')->name('lottery-results.store');
+// });
