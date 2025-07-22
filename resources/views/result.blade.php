@@ -4,16 +4,13 @@ Results
 @endsection
 
 @section('additional-css')
-<link rel="stylesheet" href="/css/style_table.css" type="text/css" />
+<link rel="stylesheet" href="{{ asset('css/style_table.css') }}" type="text/css" />
 
 @endsection
 
 @section('page-content')
 
 
-<style>
-    /* Improve jQuery UI dialog appearance */
-</style>
 
 <!-- Breadcrumb -->
 @if (session('success'))
@@ -65,14 +62,13 @@ Results
                 <!-- new code  -->
                 <td align="right" style="font-size: 16px;">
                     @auth
-                    <a id="openDialog" class="button">Add Result</a>
+                    <a href="javascript:void(0);" id="openModal" class="button">Add Result</a>
+
                     @endauth
                     <a href="/result-summary" class="button">Result Summary</a>
                     @auth
                     <a href="/result-summary" class="button">Logout</a>
                     @endauth
-                    <!-- <button id="openDialog" type="button" class="button">Add Result</button>
-                    <a href="/result-summary" class="button">Result Summary</a> -->
                 </td>
             </tr>
         </table>
@@ -80,10 +76,54 @@ Results
 
 
         <!-- Models  -->
-        <div id="iframeModal" title="Add Lottery Result" style="display:none;">
-            <iframe id="iframeContent" src="" style="width:100%; height:400px; border:none;"></iframe>
-        </div>
+        <div id="customModal" class="custom-modal">
+            <div class="custom-modal-content">
+                <div class="custom-modal-header">
+                    <h2>🎯 Add Lottery Result</h2>
+                    <span class="close-btn" id="closeModal">&times;</span>
+                </div>
 
+                <form action="{{ route('lottery-results.store') }}" method="POST">
+                    @csrf
+                    <div class="custom-modal-body">
+                        <div class="form-group">
+                            <label>🎮 Game</label>
+                            <select name="game_id" required>
+                                <option disabled selected>Select game</option>
+                                @foreach ($games as $game)
+                                <option value="{{ $game->id }}">{{ $game->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>⏰ Draw Time</label>
+                            <select name="draw_time_id" required>
+                                <option disabled selected>Select draw time</option>
+                                @foreach ($times as $time)
+                                <option value="{{ $time->id }}">{{ \Carbon\Carbon::parse($time->time)->format('h:i A') }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>📅 Draw Date</label>
+                            <input type="date" name="draw_date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>🔢 Number</label>
+                            <input type="number" name="number" min="0" max="99" required>
+                        </div>
+                    </div>
+
+                    <div class="custom-modal-footer">
+                        <button type="button" class="cancel-btn" id="closeModalFooter">Cancel</button>
+                        <button type="submit" class="save-btn">💾 Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
 
 
@@ -147,8 +187,6 @@ Results
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
 
 <!-- Datepicker initialization -->
 <script>
@@ -163,20 +201,23 @@ Results
         });
     });
 
-    $(function() {
-        $("#iframeModal").dialog({
-            autoOpen: false,
-            modal: true,
-            width: 600,
-            height: 500,
-            resizable: false
-        });
+    const modal = document.getElementById("customModal");
+    const openBtn = document.getElementById("openModal");
+    const closeBtns = [document.getElementById("closeModal"), document.getElementById("closeModalFooter")];
 
-        $("#openDialog").on("click", function() {
-            $("#iframeContent").attr("src", "{{ route('lottery-results.create') }}");
-            $("#iframeModal").dialog("open");
-        });
+    openBtn.onclick = () => modal.style.display = "block";
+
+    closeBtns.forEach(btn => {
+        if (btn) {
+            btn.onclick = () => modal.style.display = "none";
+        }
     });
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
 </script>
 
 

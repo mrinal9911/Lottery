@@ -277,7 +277,7 @@ form.default label { float: left; width: 100%; font-weight: bold; clear: both; c
 form.default label.radio { width: 180px; clear: none; }
 form.default input { margin: 0 4px 6px 0; }
 form.default input.longx { width: 84px !important; margin: 0 4px 6px 0; }
-form.default select { width: 84px !important; margin: 0 4px 6px 0; } 
+form.default select { width: 84px; margin: 0 4px 6px 0; } 
 form.default select.large { width: 266px !important; margin: 0 4px 6px 0; } 
 form.default textarea { margin: 0 0 6px; }
 form.default label small { font-weight: normal; }

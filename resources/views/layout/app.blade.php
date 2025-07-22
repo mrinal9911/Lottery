@@ -236,6 +236,7 @@
                                             <span style=" font-size:18px; color:#FFFFFF">Pin No </span>&nbsp;&nbsp;
                                             <input type="password" id="pinno" name="pinno" />
                                             <br />
+                                            <!-- <input style=" font-size:18px; height:40px; width:120px; padding:0px" href="/logout" name="btnLogin" type="submit" class="button" value="Logout" /> -->
                                             <input style=" font-size:18px; height:40px; width:120px; padding:0px" href="/login" name="btnLogin" type="submit" class="button" value="Login" />
 
                                         </div>
