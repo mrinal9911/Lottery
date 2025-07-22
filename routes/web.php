@@ -15,15 +15,15 @@ Route::controller(HomeController::class)->group(function () {
     Route::post('/login', 'postLogin');
     Route::match(['get', 'post'], '/result', 'result')->name('result');
     Route::match(['get', 'post'], '/result-summary', 'resultSummary')->name('result-summary');
+
+    Route::get('/test', 'test');
 });
 
 
 Route::controller(AdminController::class)->prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/lottery-results', 'index')->name('lottery-results.index');
-    Route ::get('/lottery-results/create', 'create')->name('lottery-results.create');
+    Route::get('/lottery-results/create', 'create')->name('lottery-results.create');
     Route::post('/lottery-results', 'store')->name('lottery-results.store');
 });
 
-// Route::controller(AdminController::class)->prefix('admin')->group(function () {
-//     Route::get('/lottery-results/create', 'create')->name('lottery-results.create');
-// });
+Route::get('/logout', [HomeController::class, 'logout'])->middleware(['auth'])->name('logout');

@@ -11,7 +11,9 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Lottery;
 
 class HomeController extends Controller
 {
@@ -124,5 +126,25 @@ class HomeController extends Controller
         } catch (Exception $e) {
             return redirect('/result-summary')->with('error', 'There was an error processing your request: ' . $e->getMessage());
         }
+    }
+
+    public function logout()
+    {
+        Auth::logout(); // logging out user
+        return Redirect::to('result'); // redirection to login screen
+    }
+
+    public function test()
+    {
+        $todayDate   = Carbon::now()->format('Y-m-d');
+        $currentTime = Carbon::now()->format('H:i:s');
+
+        return LotteryResult::select('lottery_results.*', 'draw_times.time as draw_time')
+            ->join('draw_times', 'lottery_results.draw_time_id', '=', 'draw_times.id')
+            ->orderByDesc('draw_times.time')
+            ->where('draw_date', $todayDate)
+            ->where('draw_time' < $currentTime)
+            ->limit(4)
+            ->get();
     }
 }

@@ -35,6 +35,30 @@ class AdminController extends Controller
 
         LotteryResult::create($request->all());
 
+        for ($i = 1; $i <= 4; $i++) {
+
+            if ($i == 3)
+                continue; // Skip iteration when $i is 3
+
+            $result = new LotteryResult();
+            $result->game_id      = $i;
+            $result->draw_time_id = $request->draw_time_id;
+            $result->draw_date    = $request->draw_date;
+            $result->number       = $request->number + rand(0, 9); // Adding a random number between 0 and 9 to the input number
+
+            // Check if already exists
+            $exists = LotteryResult::where('game_id', $result->game_id)
+                ->where('draw_time_id', $result->draw_time_id)
+                ->where('draw_date', $result->draw_date)
+                ->exists();
+
+            if (!$exists) {
+                $result->save();
+            }
+
+            $result->save();
+        }
+
         return redirect()->route('result')->with('success', 'Result saved.');
     }
 }
