@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
@@ -139,12 +140,19 @@ class HomeController extends Controller
         $todayDate   = Carbon::now()->format('Y-m-d');
         $currentTime = Carbon::now()->format('H:i:s');
 
-        return LotteryResult::select('lottery_results.*', 'draw_times.time as draw_time')
-            ->join('draw_times', 'lottery_results.draw_time_id', '=', 'draw_times.id')
-            ->orderByDesc('draw_times.time')
+        $results = LotteryResult::whereIn(DB::raw('(draw_time_id, draw_date)'), function ($query) {
+            $query->select(DB::raw('draw_time_id, draw_date'))
+                ->from('lottery_results')
+                ->groupBy('draw_time_id', 'draw_date')
+                ->havingRaw('COUNT(DISTINCT game_id) > 1');
+        })
             ->where('draw_date', $todayDate)
-            ->where('draw_time' < $currentTime)
+            ->orderByDesc('draw_date')
+            ->orderByDesc('draw_time_id')
+            ->orderByDesc('id')
             ->limit(4)
             ->get();
+
+        return $results;
     }
 }

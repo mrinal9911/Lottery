@@ -14,25 +14,28 @@ class LotteryResultsSeeder extends Seeder
      */
     public function run(): void
     {
-        $gameId = 1; // Change this to your actual game_id
-        $drawTimeCount = 20; // You have 20 draw times per day
-
-        // Set the date range (July 1 to July 31, 2025)
         $startDate = Carbon::create(2025, 7, 1);
         $endDate = Carbon::create(2025, 7, 31);
 
-        while ($startDate->lte($endDate)) {
-            for ($drawTimeId = 1; $drawTimeId <= $drawTimeCount; $drawTimeId++) {
-                DB::table('lottery_results')->insert([
-                    'game_id' => $gameId,
-                    'draw_time_id' => $drawTimeId,
-                    'draw_date' => $startDate->toDateString(),
-                    'number' => rand(0, 99),
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
-            }
+        // Get all draw_time_ids from the draw_times table
+        $drawTimeIds = DB::table('draw_times')->pluck('id');
 
+        // Define all game IDs you want to seed
+        $gameIds = [1, 2, 3, 4];
+
+        while ($startDate->lte($endDate)) {
+            foreach ($gameIds as $gameId) {
+                foreach ($drawTimeIds as $drawTimeId) {
+                    DB::table('lottery_results')->insert([
+                        'game_id' => $gameId,
+                        'draw_time_id' => $drawTimeId,
+                        'draw_date' => $startDate->toDateString(),
+                        'number' => rand(0, 99),
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
+                }
+            }
             $startDate->addDay();
         }
     }
