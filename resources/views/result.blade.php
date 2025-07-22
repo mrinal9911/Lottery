@@ -67,7 +67,7 @@ Results
                     @endauth
                     <a href="/result-summary" class="button">Result Summary</a>
                     @auth
-                    <a href="/result-summary" class="button">Logout</a>
+                    <a href="{{ route('logout') }}" class="button">Logout</a>
                     @endauth
                 </td>
             </tr>
