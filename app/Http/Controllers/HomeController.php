@@ -46,47 +46,27 @@ class HomeController extends Controller
 
     public function result(Request $request)
     {
+        $currentTime = Carbon::now()->format('H:i:s');
+        $date        = $request->input('selectDate') ? Carbon::createFromFormat('d/m/Y', $request->input('selectDate'))->format('Y-m-d') : now()->format('Y-m-d');
 
-        $date = $request->input('selectDate') ? Carbon::createFromFormat('d/m/Y', $request->input('selectDate'))->format('Y-m-d') : now()->format('Y-m-d');
-
-        $results = LotteryResult::with(['drawTime', 'game'])
+        $games     = Game::all(); // Should contain fields: id, name, color, number_range
+        $drawTimes = DrawTime::where('draw_times.time', '<=', $currentTime)->orderByDesc('time')->get();
+        $times     = DrawTime::all();
+        $results   = LotteryResult::with(['drawTime', 'game'])
+            ->join('draw_times',  'draw_times.id', 'lottery_results.draw_time_id')
+            ->where('draw_times.time', '<=', $currentTime)
             ->whereDate('draw_date', $date)
             ->get();
 
-        $games = Game::all(); // Should contain fields: id, name, color, number_range
-        $drawTimes = DrawTime::orderByDesc('time')->get();
-        $times = DrawTime::all();
+        if (Auth::check()) {
+            $user = Auth::user();
+            $results = LotteryResult::with(['drawTime', 'game'])
+                ->whereDate('draw_date', $date)
+                ->get();
+        }
 
         return view('result', compact('results', 'games', 'drawTimes', 'times'))
             ->with('selectedDate', $date);
-
-
-
-
-        // if ($request->isMethod('post')) {
-        //     $request->validate([
-        //         'selectDate'  => 'required|integer',
-        //         'selectMonth' => 'required|integer|min:1|max:12',
-        //     ]);
-
-        //     $gameCode = $request->input('selectGame');
-        //     $year     = $request->input('selectYear');
-        //     $month    = $request->input('selectMonth');
-
-        //     // Get game id by code
-        //     $game = Game::where('id', $gameCode)->first();
-
-        //     if ($game) {
-        //         $results = LotteryResult::with('drawTime')
-        //             ->join('games', 'lottery_results.game_id', '=', 'games.id')
-        //             ->where('game_id', $game->id)
-        //             ->whereYear('draw_date', $year)
-        //             ->whereMonth('draw_date', $month)
-        //             ->orderBy('draw_date')
-        //             ->orderBy('draw_time_id')
-        //             ->get();
-        //     }
-        // }
     }
 
     public function resultSummary(Request $request)
