@@ -72,7 +72,7 @@
             text-decoration: none;
         }
 
-       
+
 
         li.has-sub ul {
             display: none;
@@ -317,22 +317,19 @@
                                             <td><a style="color: #9ED929 " href="/result"> &nbsp;&nbsp;&nbsp;&nbsp; Results </a></td>
                                             @if (Request::is('result-summary'))
                                             <td><span style="color: #000000">|</span></td>
-<<<<<<< HEAD
                                             <td><a style="color: #9ED929" href="/login"> &nbsp;&nbsp;&nbsp;&nbsp; Login </a></td>
-=======
                                             <td>
-                                            <li class="has-sub">
-                                                <a style="color: #9ED929 " href="#"><span>Report</span></a>
-                                                <ul>
-                                                    <li><a href=""><span>Daily Reports</span></a></li>
-                                                    <li><a href=""><span>Stored Daily Reports</span></a></li>
-                                                    <li><a href=""><span>Ticket Details</span></a></li>
-                                                    <li><a href=""><span>Transaction Details</span></a></li>
-                                                    <li><a href=""><span>Slot Wise Reports</span></a></li>
-                                                </ul>
-                                            </li>
+                                                <li class="has-sub">
+                                                    <a style="color: #9ED929 " href="#"><span>Report</span></a>
+                                                    <ul>
+                                                        <li><a href=""><span>Daily Reports</span></a></li>
+                                                        <li><a href=""><span>Stored Daily Reports</span></a></li>
+                                                        <li><a href=""><span>Ticket Details</span></a></li>
+                                                        <li><a href=""><span>Transaction Details</span></a></li>
+                                                        <li><a href=""><span>Slot Wise Reports</span></a></li>
+                                                    </ul>
+                                                </li>
                                             </td>
->>>>>>> 5427f3994698501254c7a93fee11b777301f0322
                                             @endif
                                             <!-- <td><span style="color: #000000">|</span></td>
                                             <td><a style="color: #9ED929 " href="/login"> &nbsp;&nbsp;&nbsp;&nbsp; Login </a></td> -->
