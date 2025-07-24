@@ -51,6 +51,54 @@
             padding-left: 10px;
             float: right;
         }
+
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li.has-sub {
+            position: relative;
+            display: inline-block;
+        }
+
+        li.has-sub>a {
+            display: block;
+            padding: 10px 20px;
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+       
+
+        li.has-sub ul {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 200px;
+            top: 100%;
+            left: 0;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        /* li.has-sub:hover ul {
+            display: block;
+        } */
+
+        li.has-sub ul li a {
+            display: block;
+            padding: 10px 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        li.has-sub ul li a:hover {
+            background-color: #555;
+        }
     </style>
 
 
@@ -264,8 +312,19 @@
                                             <td><span style="color: #000000">|</span></td>
                                             <td><a style="color: #9ED929 " href="/result"> &nbsp;&nbsp;&nbsp;&nbsp; Results </a></td>
                                             @if (Request::is('result-summary'))
-                                                <td><span style="color: #000000">|</span></td>
-                                                <td><a style="color: #9ED929" href="/login"> &nbsp;&nbsp;&nbsp;&nbsp; Login </a></td>
+                                            <td><span style="color: #000000">|</span></td>
+                                            <td>
+                                            <li class="has-sub">
+                                                <a style="color: #9ED929 " href="#"><span>Report</span></a>
+                                                <ul>
+                                                    <li><a href=""><span>Daily Reports</span></a></li>
+                                                    <li><a href=""><span>Stored Daily Reports</span></a></li>
+                                                    <li><a href=""><span>Ticket Details</span></a></li>
+                                                    <li><a href=""><span>Transaction Details</span></a></li>
+                                                    <li><a href=""><span>Slot Wise Reports</span></a></li>
+                                                </ul>
+                                            </li>
+                                            </td>
                                             @endif
                                             <!-- <td><span style="color: #000000">|</span></td>
                                             <td><a style="color: #9ED929 " href="/login"> &nbsp;&nbsp;&nbsp;&nbsp; Login </a></td> -->
@@ -323,6 +382,17 @@
                 const formatted = today.toLocaleDateString('en-GB'); // e.g., "21/07/2025"
                 document.getElementById('todays_date').innerText = formatted;
             };
+
+
+            document.addEventListener("DOMContentLoaded", function() {
+                document.querySelectorAll(".has-sub > a").forEach(function(trigger) {
+                    trigger.addEventListener("click", function(e) {
+                        e.preventDefault();
+                        const dropdown = this.nextElementSibling;
+                        dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+                    });
+                });
+            });
         </script>
 </body>
 
