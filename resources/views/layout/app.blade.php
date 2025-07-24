@@ -183,7 +183,11 @@
                                                                         <span style="color: #fed22f; font-size: medium ">Date</span>
                                                                         <strong><br /><span id="todays_date">&nbsp;</span><br />
                                                                             <span style="color: #fed22f; font-size: medium ">Result Draw</span><br />
-                                                                            <span id="result_time">&nbsp;</span></strong></span>
+                                                                            @php
+                                                                            use Carbon\Carbon;
+                                                                            $formattedTime = Carbon::createFromFormat('H:i:s', $results[0]['time'])->format('h:i A');
+                                                                            @endphp
+                                                                            <span id="result_time">&nbsp;</span>{{ $formattedTime ?? null }}</strong></span>
                                                                 </td>
                                                                 <td align="center">
                                                                     <span style=" font-size:24px; color:#FFFFFF"><strong>
@@ -196,10 +200,10 @@
                                                                                     <td style="background-repeat: repeat-y; background-position: center; background-image:url('{{ asset('images/gb_back.png') }}'); background-size: 55px 55px; width:55px; height:55px; font-size:20pt; color: rgb(255,0,0);"><span id="star3_single">&nbsp;</span></td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url('{{ asset('images/res_back.png') }}');  background-size: 55px 45px; width:55px; height:45px; font-size:20pt; color: rgb(255,0,0);"><span id="result_GA">&nbsp;</span></td>
-                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url('{{ asset('images/res_back.png') }}'); background-size: 55px 45px; width:55px; height:45px; font-size:20pt; color: rgb(255,0,0);"><span id="result_GB">&nbsp;</span></td>
-                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url('{{ asset('images/res_back.png') }}'); background-size: 55px 45px; width:55px; height:45px; font-size:20pt; color: rgb(255,0,0);"><span id="result_GC">&nbsp;</span></td>
-                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url('{{ asset('images/res_back.png') }}'); background-size: 55px 45px; width:55px; height:45px; font-size:20pt; color: rgb(255,0,0);"><span id="star3_sp">&nbsp;</span></td>
+                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url('{{ asset('images/res_back.png') }}');  background-size: 55px 45px; width:55px; height:45px; font-size:20pt; color: rgb(255,0,0);">{{ $results[3]['number'] ?? null }}<span id="result_GA">&nbsp;</span></td>
+                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url('{{ asset('images/res_back.png') }}'); background-size: 55px 45px; width:55px; height:45px; font-size:20pt; color: rgb(255,0,0);">{{ $results[2]['number'] ?? null }}<span id="result_GB">&nbsp;</span></td>
+                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url('{{ asset('images/res_back.png') }}'); background-size: 55px 45px; width:55px; height:45px; font-size:20pt; color: rgb(255,0,0);">{{ $results[1]['number'] ?? null }}<span id="result_GC">&nbsp;</span></td>
+                                                                                    <td style="background-repeat: repeat-y; background-position: center; background-image:url('{{ asset('images/res_back.png') }}'); background-size: 55px 45px; width:55px; height:45px; font-size:20pt; color: rgb(255,0,0);">{{ $results[0]['number'] ?? null }}<span id="star3_sp">&nbsp;</span></td>
                                                                                 </tr>
                                                                             </table>
                                                                         </strong>
@@ -216,7 +220,7 @@
                                                         <table width="100%">
                                                             <tr>
                                                                 <td align="left"><span style=" font-size:16px; color: #fed22f">Current Time<strong><br /><span style="color: #FFFFFF" id="currentTime">loading..</span></strong></span></td>
-                                                                <td align="center"><span style=" font-size:20px; color:#fed22f">Next Draw Time<strong><br /><span style="color: #FFFFFF" id="nextDraw">&nbsp;</span></strong></span></td>
+                                                                <td align="center"><span style=" font-size:20px; color:#fed22f">Next Draw Time<strong><br /><span style="color: #FFFFFF" id="nextDraw">&nbsp;{{ \Carbon\Carbon::createFromFormat('H:i:s', $nextDrawTime->time)->format('h:i A') }}</span></strong></span></td>
                                                                 <td align="right"><span style=" font-size:16px; color:#fed22f">Time Remaining<strong><br /><span style="color: #FFFFFF" id="timeRemaining">&nbsp;</span></strong></span></td>
                                                             </tr>
                                                         </table>
@@ -264,8 +268,8 @@
                                             <td><span style="color: #000000">|</span></td>
                                             <td><a style="color: #9ED929 " href="/result"> &nbsp;&nbsp;&nbsp;&nbsp; Results </a></td>
                                             @if (Request::is('result-summary'))
-                                                <td><span style="color: #000000">|</span></td>
-                                                <td><a style="color: #9ED929" href="/login"> &nbsp;&nbsp;&nbsp;&nbsp; Login </a></td>
+                                            <td><span style="color: #000000">|</span></td>
+                                            <td><a style="color: #9ED929" href="/login"> &nbsp;&nbsp;&nbsp;&nbsp; Login </a></td>
                                             @endif
                                             <!-- <td><span style="color: #000000">|</span></td>
                                             <td><a style="color: #9ED929 " href="/login"> &nbsp;&nbsp;&nbsp;&nbsp; Login </a></td> -->
